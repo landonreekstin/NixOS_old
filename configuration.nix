@@ -115,10 +115,23 @@
     git
     discord
     vscodium
+    mangohud
+    protonup
+    lutris
+    bottles
   ];
 
   # Other programs
   programs.firefox.enable = true;
+
+  # Steam and gaming
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
+      "\${HOME}/.steam/root/compatibilitytools.d";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -132,6 +145,11 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Enable XRDP Remote Desktop
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "startplasma-x11";
+  services.xrdp.openFirewall = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
