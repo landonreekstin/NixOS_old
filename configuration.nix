@@ -31,8 +31,9 @@
   services.xserver.enable = true;
 
   # Enable the Plasma 5 Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.xterm.enable = false;
+  services.xserver.desktopManager.xfce.enable = true;
+  services.displayManager.defaultSession = "xfce";
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
