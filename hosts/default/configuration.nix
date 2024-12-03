@@ -30,7 +30,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the Plasma 5 Desktop Environment.
+  # Enable the Xfce Desktop Environment.
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.desktopManager.xfce.enable = true;
   services.displayManager.defaultSession = "xfce";
@@ -49,45 +49,7 @@
   nixpkgs.config.pulseaudio = true;
 
   # Enable Nvidia graphics.
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-  };
-
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  nvidiaModule.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.landon = {
@@ -96,15 +58,6 @@
     packages = with pkgs; [
       tree
     ];
-  };
-
-  # Home Manager
-  home-manager = {
-    # also pass inputs to home-manager modules
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "landon" = import ./home.nix;
-    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -146,6 +99,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.KbdInteractiveAuthentication = false;
 
   # Enable XRDP Remote Desktop
   services.xrdp.enable = true;
