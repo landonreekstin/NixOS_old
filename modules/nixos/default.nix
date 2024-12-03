@@ -5,6 +5,6 @@
 
 {
   imports = [
-    ./nvidiaModule.nix
+    ./nvidia.nix
   ];
 }

@@ -23,13 +23,8 @@
         modules = [
           ./hosts/default/configuration.nix
           ./modules/nixos/default.nix
-          #inputs.home-manager.nixosModules.default
-          #vscode-server.nixosModules.default
-          #({ config, pkgs, ... }: {
-          #  services.vscode-server.enable = true;
-          #})
         ];
       };
-      homeManagerModules.default = ./modules/homeManager/default.nix;
+      homeManagerModules.default = ./modules/home-manager/default.nix;
     };
 }

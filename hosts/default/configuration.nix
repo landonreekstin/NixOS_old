@@ -49,7 +49,10 @@
   nixpkgs.config.pulseaudio = true;
 
   # Enable Nvidia graphics.
-  nvidiaModule.enable = true;
+  nvidia.enable = true;
+
+  # Enable Xbox One controller driver.
+  hardware.xone.enable = true;  # TODO: move into 'gaming' module
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.landon = {

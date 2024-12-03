@@ -16,7 +16,7 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   # enable modules
-  nvidiaModule.enable = true;
+  nvidia.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
