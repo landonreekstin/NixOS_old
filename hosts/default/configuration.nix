@@ -25,12 +25,12 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/Chicago"; # TODO: Make as home-manager option?
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the Xfce Desktop Environment.
+  # Enable the Xfce Desktop Environment. # TODO: Make as home-manager option?
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.desktopManager.xfce.enable = true;
   services.displayManager.defaultSession = "xfce";
@@ -54,7 +54,7 @@
   # Enable Xbox One controller driver.
   hardware.xone.enable = true;  # TODO: move into 'gaming' module
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with ‘passwd’. # TODO: Make as home-manager option?
   users.users.landon = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
@@ -66,20 +66,28 @@
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ # TODO: include only essential packages, add others to modules and home-manager
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
     discord
+    spotify
     vscodium
     mangohud
     protonup
     lutris
     bottles
+    #xboxdrv
+    librewolf
+    ckb-next
   ];
 
   # Other programs
   programs.firefox.enable = true;
+  programs.streamdeck-ui = {
+    enable = true;
+    autoStart = true; # optional
+  };
 
   # Steam and gaming
   programs.steam.enable = true;
@@ -89,16 +97,6 @@
     STEAM_EXTRA_COMPAT_TOOLS_PATHS =
       "\${HOME}/.steam/root/compatibilitytools.d";
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
