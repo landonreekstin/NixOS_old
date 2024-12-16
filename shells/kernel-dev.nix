@@ -60,6 +60,7 @@ with import <nixpkgs> {};
         shellHook = ''
             echo "Starting Linux Kernel 6.1.25 development environment..."
             cd /home/landon/kernel-dev/linux-6.1.25 
+            export KSRC=/home/landon/kernel-dev/linux-6.1.25
         '';
 
     };
