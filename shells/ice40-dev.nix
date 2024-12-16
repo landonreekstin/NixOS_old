@@ -1,4 +1,4 @@
-Standalone Nix shell for ICE40 FPGA tools
+# Standalone Nix shell for ICE40 FPGA tools
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
