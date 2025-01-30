@@ -8,6 +8,8 @@ pkgs.mkShell {
     icestorm     # iCE40 bitstream tools
     iverilog     # Optional: Verilog simulation
     gtkwave      # Optional: Waveform viewer
+    apio         # TODO: make ver 0.6.7
+    python         
   ];
 
   shellHook = ''
