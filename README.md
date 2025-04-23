@@ -1,3 +1,5 @@
+[DEPRECATED] This config is no longer being updated. I have started a new config at https://github.com/landonreekstin/nixos-config. 
+
 This is my personal NixOS configuration for my home machines. The focus of this config is isolated development environments, security,
 privacy, and gaming.
 
